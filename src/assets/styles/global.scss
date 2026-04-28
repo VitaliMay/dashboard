@@ -1,0 +1,411 @@
+@use 'normalize.css';
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'fonts' as *;
+
+/* сбрасываю, то что может мешать */
+
+*,
+*::after,
+*::before {
+  // box-sizing: inherit;
+  box-sizing: border-box;
+
+  // outline: 4px solid red !important; // чтобы видеть что выходит за пределы
+}
+
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul[class] {
+  list-style: none;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* если в браузере включена настройка «уменьшить движение» (Reduce Motion) */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+a {
+  /* чтобы наследовали цвет родителя */
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  color: inherit;
+  appearance: none;
+  outline: none; /* убираю фокус */
+  background: none;
+  border: none;
+  border: solid 2px blue; /* чтобы увидеть кнопку */
+}
+
+:root {
+  --bg-dark: #030303;
+  --dark-red: #710707;
+  --font-gold: #9d8665;
+  --links-dark: #000;
+  --links-light: #fff;
+  --links-hover: #9d8665;
+  --links-active: #7e6c51;
+  --links-asset: #b3b3b3;
+  --links-asset-hover: #989898;
+  --progress-main: #c4c4c4;
+  --font-family: 'Roboto', sans-serif;
+}
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* чтобы прижать футер к низу страницы */
+
+/*! чтобы всегда была полоса прокрутки и не дергалось при пиксель перфект. 
+Надо убрать для мобилок*/
+
+html {
+  height: 100.1%;
+  scrollbar-gutter: stable; // чтобы не дёргалось при открытии модалок
+}
+
+body {
+  font-family: $font-family-sans-Roboto;
+
+  // font-family: $font-family-sans;
+  color: var(--links-dark);
+  background-color: var(--links-light);
+}
+
+body.lock {
+  overflow: hidden;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  // max-width: 1440px;
+  // width: 1440px;
+  max-width: $width-wrapper;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+/* чтобы прижать футер к низу страницы */
+.main {
+  // flex: 1 0 auto;
+  flex-grow: 1;
+}
+
+.footer {
+  flex: 0 0 auto;
+}
+
+/* === hidden === */
+.visually-hidden {
+  // position: absolute;
+  // width: 1px;
+  // height: 1px;
+  // margin: -1px;
+  // border: 0;
+  // padding: 0;
+
+  // white-space: nowrap;
+  // clip-path: inset(100%);
+  // clip: rect(0 0 0 0);
+  // overflow: hidden;
+
+  // outline: 0;
+  // outline-offset: 0;
+
+  // opacity: 0;
+  // transition: opacity 0.4s ease;
+
+  transform: translateX(-100%);
+  transition: all 0.4s ease;
+
+  // clip-path: inset(0 0 0 100%);
+  // transition: clip-path 0.5s ease-out;
+}
+
+*.hidden {
+  display: none !important;
+}
+
+/* ********   Тестовые стили ********** */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: $width-wrapper;
+  padding: 12px 8px;
+  margin: 0 auto;
+  background: $static-white;
+}
+
+.header-container {
+  display: flex;
+  column-gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: $width-container;
+}
+
+.logo {
+  position: relative; /////////////////
+  z-index: 40; /////////////////
+  display: flex;
+  column-gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  width: 141px;
+  height: 40px;
+  padding: 8px 20px;
+  color: $primary; // для цвета иконки SVG так как установил fill="currentColor"
+  background: $static-white;
+  border-radius: 4px;
+
+  &__img {
+    width: 24px;
+    height: 24px;
+  }
+
+  @include custom-cursor;
+
+  &__text {
+    @include action-small;
+
+    color: $dark;
+  }
+
+  &:hover {
+    border-radius: 12px;
+  }
+
+  @include cansel-color-touch;
+}
+
+/***********  MENU   *************/
+
+.menu {
+  background: $static-white;
+
+  @media screen and (max-width: $media-tablet) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 16;
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 60px; //////////// 50px нравится больше но по ПП так
+    overflow: hidden auto;
+    opacity: 0;
+    transform: translateX(100%);
+    transition:
+      transform $time-tr ease,
+      opacity $time-tr linear;
+
+    @supports (height: 100dvh) {
+      width: 100dvw;
+
+      // Стили для браузеров, поддерживающих 100dvh
+      height: 100dvh;
+    }
+
+    @supports not (height: 100dvh) {
+      width: 100vw;
+
+      // Стили для браузеров, НЕ поддерживающих 100dvh
+      height: 100vh;
+    }
+  }
+
+  &.open {
+    opacity: 1;
+    transform: translateX(0%);
+    transition:
+      transform $time-tr ease,
+      opacity $time-tr ease-in-out;
+  }
+}
+
+.menu__list {
+  display: flex;
+  gap: 8px; //////////
+  align-items: center;
+  justify-content: space-between;
+
+  &-link {
+    display: block; /////////
+    padding: 12px 20px;
+    color: $dark;
+    background: $static-white;
+    border-radius: 4px;
+    transition: all $time-tr;
+
+    @include cansel-color-touch;
+    @include action-small;
+
+    @media screen and (max-width: $media-tablet) {
+      @include action-large;
+    }
+
+    &--disabled {
+      color: $primary;
+      pointer-events: none;
+      background: $primary-10;
+      border-radius: 12px;
+      transition: all $time-tr;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: $primary;
+        background: $primary-10;
+        border-radius: 12px;
+        transition: all $time-tr;
+      }
+    }
+
+    // для показа взаимодействия
+    @media (hover: none) and (pointer: coarse) {
+      &:active {
+        color: $primary;
+        background: $primary-10;
+        border-radius: 12px;
+        transition: all $time-active;
+
+        @include cansel-color-touch;
+      }
+    }
+  }
+}
+
+.menu__list {
+  @media screen and (max-width: $media-tablet) {
+    flex-shrink: 0;
+    flex-direction: column;
+  }
+}
+
+/*********** BURGER  *************/
+
+.burger-button {
+  position: relative;
+  z-index: 30;
+  display: none;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid $static-white;
+  transition: all $time-tr;
+
+  @media screen and (max-width: $media-tablet) {
+    display: flex;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      transition: $time-tr all;
+
+      @include custom-cursor;
+    }
+
+    &:hover .burger-button__cross {
+      transition: $time-tr all;
+    }
+
+    &:active {
+      transition: transform $time-tr ease;
+
+      & .burger-button__cross--01 {
+        transform: translateY(0) rotate(-45deg);
+        transition: transform $time-tr ease;
+      }
+
+      & .burger-button__cross--02 {
+        transform: translateY(0) rotate(45deg);
+        transition: transform $time-tr ease;
+      }
+    }
+  }
+}
+
+////////////////////////  рисую кнопку /////////////////////////////////
+
+.burger-button__cross {
+  width: 20px;
+  height: 1px;
+  background-color: $dark;
+  border-radius: 1.5px;
+  transition: transform $time-tr ease;
+}
+
+.burger-button__cross--01 {
+  position: absolute;
+  transform: translateY(-4px);
+  transition: transform $time-tr ease;
+}
+
+.burger-button__cross--02 {
+  position: absolute;
+  transform: translateY(4px);
+  transition: transform $time-tr ease;
+}
+
+//////////////   заставляю кнопку работать при клике   //////////////////////////////
+
+.burger-button.rotade {
+  & .burger-button__cross--01 {
+    transform: translateY(0) rotate(-45deg);
+    transition: transform $time-tr ease;
+  }
+
+  & .burger-button__cross--02 {
+    transform: translateY(0) rotate(45deg);
+    transition: transform $time-tr ease;
+  }
+}

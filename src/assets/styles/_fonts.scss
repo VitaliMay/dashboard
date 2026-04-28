@@ -1,0 +1,73 @@
+@use 'sass:map';
+
+/* === Roboto === */
+
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  src:
+    url('@/assets/fonts/Roboto/roboto-variablefont_wdthwght-webfont.woff2') format('woff2'),
+    url('@/assets/fonts/Roboto/roboto-variablefont_wdthwght-webfont.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Roboto-Thin;
+  font-style: normal;
+  font-weight: 100;
+  src:
+    url('@/assets/fonts/Roboto/Roboto-Thin.woff2') format('woff2'),
+    url('@/assets/fonts/Roboto/Roboto-Thin.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Roboto-Light;
+  font-style: normal;
+  font-weight: 300;
+  src:
+    url('@/assets/fonts/Roboto/Roboto-Light.woff2') format('woff2'),
+    url('@/assets/fonts/Roboto/Roboto-Light.woff') format('woff');
+  font-display: swap;
+}
+
+/* === Forum === */
+
+@font-face {
+  font-family: Forum;
+  font-style: normal;
+  font-weight: normal;
+  src:
+    url('@/assets/fonts/Forum/Forum.woff2') format('woff2'),
+    url('@/assets/fonts/Forum/Forum.woff') format('woff');
+  font-display: swap;
+}
+
+/* === Montserrat === */
+
+@font-face {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 400;
+  src:
+    url('../../assets/styles/fonts/Montserrat/Montserrat-Regular.woff2') format('woff2'),
+    url('../../assets/styles/fonts/Montserrat/Montserrat-Regular.woff') format('woff'),
+    url('../../assets/styles/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  src:
+    url('../../assets/styles/fonts/Montserrat/Montserrat-SemiBold.woff2') format('woff2'),
+    url('../../assets/styles/fonts/Montserrat/Montserrat-SemiBold.woff') format('woff'),
+    url('../../assets/styles/fonts/Montserrat/Montserrat-SemiBold.ttf') format('truetype');
+  font-display: swap;
+}
+
+$font-family-sans-Roboto: 'Roboto', sans-serif;
+$font-family-sans-Forum: 'Forum', sans-serif;
+$font-family-sans-Montserrat: 'Montserrat', sans-serif;

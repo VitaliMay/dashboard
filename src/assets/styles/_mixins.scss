@@ -1,0 +1,36 @@
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin box-shadow($x: 0, $y: 2px, $blur: 4px, $color: rgba(0, 0, 0, 0.1)) {
+  box-shadow: $x $y $blur $color;
+}
+
+@mixin cansel-color-touch {
+  // убирает синий цвет при таче
+  -webkit-tap-highlight-color: transparent;
+}
+
+@mixin custom-cursor {
+  cursor: url('../../assets/img/pointinghand.svg'), pointer;
+}
+
+@mixin action-small {
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 130%;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@mixin action-large {
+  font-family: Montserrat, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 152%;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
