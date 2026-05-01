@@ -1,7 +1,8 @@
-@use 'normalize.css';
+@use 'sass:color';
 @use 'variables' as *;
 @use 'mixins' as *;
 @use 'fonts' as *;
+@use 'normalize.css';
 
 /* сбрасываю, то что может мешать */
 
@@ -286,6 +287,7 @@ body.lock {
 
     @include cansel-color-touch;
     @include action-small;
+    @include custom-cursor;
 
     @media screen and (max-width: $media-tablet) {
       @include action-large;
@@ -408,4 +410,40 @@ body.lock {
     transform: translateY(0) rotate(45deg);
     transition: transform $time-tr ease;
   }
+}
+
+/******************** Опыты с цветом *******************************/
+
+.button {
+  max-width: 100px;
+  padding: 10px 20px;
+  margin-left: 20px;
+  color: $static-white;
+
+  // cursor: pointer;
+  // background-color: $primary-color;
+  border: none;
+  transition: all 0.2s ease;
+
+  // // HOVER - немного темнее
+  // &:hover {
+  //   background-color: color.adjust($primary-color, $lightness: -10%);
+  // }
+
+  // // ACTIVE - ещё темнее (эффект нажатия)
+  // &:active {
+  //   background-color: color.adjust($primary-color, $lightness: -20%);
+  //   transform: scale(0.98);
+  // }
+
+  // // FOCUS - внешняя тень + небольшое осветление/затемнение
+  // &:focus {
+  //   outline: none;
+
+  //   // Осветление для акцента
+  //   // background-color: color.adjust($primary-color, $lightness: 5%);
+  //   box-shadow: 0 0 0 3px rgba($primary-color, $focus-glow);
+  // }
+  @include interactive-states($danger-color);
+  @include custom-cursor;
 }

@@ -29,5 +29,6 @@ export default {
     'scss/at-rule-no-unknown': true, // Запрещает опечатки в @правилах
     'no-empty-source': null, // Не ругается на пустые файлы стилей
     'no-duplicate-selectors': null, // Полезно, при вложенности (nesting)
+    'scss/no-global-function-names': null, // чтобы использовать цветовые функции
   },
 };

@@ -33,6 +33,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "draft/draft-elementUtils.js"],
   "exclude": ["node_modules", "dist"]
 }

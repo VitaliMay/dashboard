@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 @mixin flex-center {
   display: flex;
   align-items: center;
@@ -33,4 +35,32 @@
   line-height: 152%;
   text-transform: uppercase;
   letter-spacing: 0.16em;
+}
+
+// Универсальный миксин для интерактивных состояний
+@mixin interactive-states($color) {
+  background-color: $color;
+
+  &:hover {
+    background-color: color.adjust($color, $lightness: -10%);
+  }
+
+  &:active {
+    background-color: color.adjust($color, $lightness: -20%);
+  }
+
+  // &:focus {
+  //   outline: none;
+  //   box-shadow: 0 0 0 3px rgba($color, 0.3);
+  // }
+
+  // &:hover {
+  //   // Сдвигаем тон на один шаг
+  //   background-color: color.adjust($color, $hue: 15deg);
+  // }
+
+  // &:active {
+  //   // При клике сдвигаем еще дальше (двойной шаг)
+  //   background-color: color.adjust($color, $hue: 15deg * 2);
+  // }
 }

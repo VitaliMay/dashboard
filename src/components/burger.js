@@ -1,4 +1,4 @@
-import { CLASSES, CONFIG } from './config.js';
+import { CLASSES, CONFIG } from '../config/config';
 
 const burgerButton = document.querySelector('.burger-button');
 const body = document.body;

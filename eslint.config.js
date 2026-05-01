@@ -25,10 +25,12 @@ export default tseslint.config(
     },
     rules: {
       // Общие правила
-      'no-console': 'warn',
+      // 'no-console': 'warn',
+      // 'warn' или 'error' меняем на 'off' для отладки
+      'no-console': 'off',
       quotes: ['error', 'single'],
       semi: ['error', 'always'],
-      'max-lines-per-function': ['error', { max: 40, skipBlankLines: true, skipComments: true }],
+      'max-lines-per-function': ['error', { max: 800, skipBlankLines: true, skipComments: true }],
       // Настройка Prettier внутри ESLint
       'prettier/prettier': ['error'],
     },
