@@ -14,9 +14,15 @@ export const createTestPanel = () => {
     return;
   }
 
+  const button = document.querySelector('.button');
+
   // Создаем стили для панели
   const styles = document.createElement('style');
   styles.textContent = `
+    .panel-hidden {
+      display: none;
+    }
+
     .test-panel {
       position: fixed;
       bottom: 20px;
@@ -142,7 +148,7 @@ export const createTestPanel = () => {
   // Создаем HTML панели
   const panel = document.createElement('div');
   panel.id = 'test-panel';
-  panel.className = 'test-panel';
+  panel.className = 'test-panel panel-hidden';
   panel.innerHTML = `
     <div class="test-panel-header">
       <h3>📊 Управление проектами (Dev Panel)</h3>
@@ -175,6 +181,7 @@ export const createTestPanel = () => {
   document.body.appendChild(panel);
 
   // Переменные для состояния
+  let noPanel = true;
   let isMinimized = false;
   const header = panel.querySelector('.test-panel-header');
   const toggleBtn = panel.querySelector('.test-panel-toggle');
@@ -377,6 +384,16 @@ export const createTestPanel = () => {
       }
     });
   });
+
+  const buttonPanelHidden = () => {
+    noPanel = !noPanel;
+    if (noPanel) {
+      panel.classList.add('panel-hidden');
+    } else {
+      panel.classList.remove('panel-hidden');
+    }
+  };
+  button.addEventListener('click', buttonPanelHidden);
 
   // Сворачивание/разворачивание
   const togglePanel = () => {
