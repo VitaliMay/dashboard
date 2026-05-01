@@ -6,7 +6,7 @@ import globals from 'globals';
 export default tseslint.config(
   // 1. Папки-исключения
   {
-    ignores: ['dist', 'node_modules', 'public', 'vite.config.js'],
+    ignores: ['dist', 'node_modules', 'public', 'vite.config.js', 'draft'],
   },
 
   // 2. Базовые настройки для всех файлов

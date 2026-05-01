@@ -33,11 +33,16 @@ console.log('📅 Доступные месяцы:', monthlyStore.getMonths());
 
 // Создаем тестовую панель
 // Проверяем, что мы не в продакшене (по hostname или параметру)
-const isDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+// const isDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
-if (isDev) {
-  setTimeout(() => {
-    createTestPanel();
-    console.log('🛠️ Режим разработки: window.store, window.exportData()');
-  }, 1000);
-}
+// if (isDev) {
+//   setTimeout(() => {
+//     createTestPanel();
+//     console.log('🛠️ Режим разработки: window.store, window.exportData()');
+//   }, 1000);
+// }
+
+setTimeout(() => {
+  createTestPanel();
+  console.log('🛠️ Режим разработки: window.store, window.exportData()');
+}, 1000);
