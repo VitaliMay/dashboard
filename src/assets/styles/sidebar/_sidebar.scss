@@ -1,0 +1,237 @@
+@use 'sass:color';
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.app {
+  padding-left: calc($sidebar-width + 10px);
+  transition: padding $time-tr;
+}
+
+.app.sidebar_collapsed {
+  padding-left: calc($sidebar-toggle-size + 30px);
+  transition: padding $time-tr;
+}
+
+.sidebar {
+  position: fixed;
+
+  // position: relative;
+  // right: 0;
+  // top: 80px;
+  // bottom: 20px;
+  top: 60px;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  width: $sidebar-width;
+  max-height: 500px;
+
+  // overflow: hidden;
+  overflow-y: auto;
+  color: #e2e8f0;
+  background: linear-gradient(180deg, #1a2c3e 0%, #0f1e2c 100%);
+  box-shadow: 4px 0 20px rgb(0, 0, 0, 10%);
+
+  // transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  // transition: right $time-tr;
+  transition: left $time-tr;
+
+  // Для больших экранов - ограничение максимальной ширины
+  // чтобы не убегало влево
+  @media (width >= calc($width-wrapper + 40px)) {
+    right: auto;
+    left: calc((100% - #{$width-wrapper}) / 2);
+  }
+}
+
+// .sidebar.collapsed {
+.app.sidebar_collapsed .sidebar {
+  // right: $sidebar-width;
+  // transition: right $time-tr;
+  left: calc(0px - $sidebar-width - 10px);
+  transition: left $time-tr;
+}
+
+.sidebar-toggle {
+  position: absolute;
+  top: 43px;
+
+  // right: 15px;
+  left: calc($sidebar-width - 15px - $sidebar-toggle-size);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $sidebar-toggle-size;
+  height: $sidebar-toggle-size;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  background: #2266c7;
+  border: none;
+  border-radius: 30%;
+  box-shadow: 0 2px 8px rgb(0, 0, 0, 20%);
+  transform: rotate(180deg);
+
+  // transition:
+  //   transform $time-tr,
+  //   right $time-tr;
+  transition:
+    transform $time-tr,
+    left $time-tr;
+
+  // @include interactive-states(#2266c7);
+  @include interactive-states($active-button);
+  @include custom-cursor;
+
+  &__icon {
+    width: 16px;
+    height: 20px;
+  }
+}
+
+// .sidebar.collapsed .sidebar-toggle {
+.app.sidebar_collapsed .sidebar-toggle {
+  position: fixed;
+  top: 103px;
+
+  // right: calc(0px - $sidebar-toggle-size - 20px);
+
+  // left: calc($sidebar-width + 100px);
+  // left: 20px;
+  left: 0;
+  z-index: 60;
+  transform: rotate(0deg);
+
+  // transition:
+  //   transform $time-tr,
+  //   right $time-tr;
+  transition:
+    transform $time-tr,
+    left $time-tr;
+}
+
+.main-content {
+  min-width: calc(100% - calc($sidebar-width + 10px));
+
+  // padding-left: calc($sidebar-width + 10px);
+  overflow-x: auto;
+}
+
+.app.sidebar_collapsed .main-content {
+  // margin-left: 250px;
+  min-width: calc(100% - 100px);
+
+  // padding-left: 100px;
+  overflow-x: auto;
+}
+
+.sidebar-header {
+  padding: 28px 20px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid rgb(255, 255, 255, 10%);
+}
+
+/* Period selectors in sidebar */
+.period-section {
+  padding: 0 16px 20px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid rgb(255, 255, 255, 10%);
+}
+
+.period-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.7rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.period-select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: white;
+
+  @include custom-cursor;
+
+  background: rgb(255, 255, 255, 8%);
+  border: 1px solid rgb(255, 255, 255, 15%);
+  border-radius: 12px;
+}
+
+.period-select option {
+  color: white;
+  background: #1a2c3e;
+}
+
+/* Navigation */
+.nav-menu {
+  flex: 1;
+  padding: 0 12px;
+}
+
+.nav-item {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  color: #cbd5e1;
+
+  @include custom-cursor;
+
+  border-radius: 14px;
+  transition: all 0.2s;
+}
+
+.nav-item:hover {
+  color: white;
+  background: rgb(255, 255, 255, 8%);
+}
+
+.nav-item.active {
+  color: white;
+  background: #2266c7;
+  box-shadow: 0 4px 12px rgb(34, 102, 199, 30%);
+}
+
+.nav-icon {
+  min-width: 28px;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.sidebar-footer {
+  padding: 20px 16px 28px;
+  margin-top: auto;
+  border-top: 1px solid rgb(255, 255, 255, 10%);
+}
+
+.seed-btn {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px;
+  font-weight: 600;
+  color: #fbbf24;
+
+  @include custom-cursor;
+
+  background: rgb(255, 255, 255, 8%);
+  border: 1px solid rgb(255, 255, 255, 15%);
+  border-radius: 14px;
+  transition: all $time-tr;
+}
+
+.seed-btn:hover {
+  background: rgb(251, 191, 36, 15%);
+  border-color: #fbbf24;
+}

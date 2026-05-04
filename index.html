@@ -33,14 +33,7 @@
         </defs>
       </symbol>
 
-      <symbol
-        id="arrow-symbol"
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-      >
+      <symbol id="arrow-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
         <path
           class="slider-btn__img"
           d="M6 12H18.5M18.5 12L12.5 6M18.5 12L12.5 18"
@@ -110,9 +103,8 @@
     </svg>
 
     <div class="wrapper">
-      <header class="header">
+      <!-- <header class="header">
         <div class="header-container">
-          <!-- <a class="logo" href="./"> -->
           <a class="logo" href="#no_scroll">
             <svg class="logo__img">
               <use href="#logo__img-symbol"></use>
@@ -140,9 +132,213 @@
             </ul>
           </nav>
         </div>
-      </header>
+      </header> -->
 
       <button class="button">button</button>
+
+      <div class="app">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+          <button class="sidebar-toggle">
+            <svg class="sidebar-toggle__icon">
+              <use href="#arrow-symbol"></use>
+            </svg>
+          </button>
+          <div class="sidebar-header"></div>
+
+          <div class="period-section">
+            <span class="period-label">📅 PERIOD</span>
+            <select class="period-select period-select_month">
+              <option value="January">January</option>
+              <option value="February">February</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May" selected>May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="August">August</option>
+              <option value="September">September</option>
+              <option value="October">October</option>
+              <option value="November">November</option>
+              <option value="December">December</option>
+            </select>
+            <select class="period-select period-select_year">
+              <option value="2025">2025</option>
+              <option value="2026" selected>2026</option>
+              <option value="2027">2027</option>
+            </select>
+          </div>
+
+          <div class="nav-menu">
+            <div class="nav-item active" data-tab="projects">
+              <span class="nav-icon">📊</span>
+              <span class="nav-text">Projects</span>
+            </div>
+            <div class="nav-item" data-tab="employees">
+              <span class="nav-icon">👥</span>
+              <span class="nav-text">Employees</span>
+            </div>
+          </div>
+
+          <div class="sidebar-footer">
+            <button class="seed-btn" id="seedDataBtn">🌱 <span>Seed Data</span></button>
+          </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+          <!-- Projects Panel -->
+          <div class="view-panel view-panel_project active">
+            <div class="card">
+              <div class="card-header">
+                <h2>📁 Projects</h2>
+                <button class="btn-primary btn-primary_project">+ Add Project</button>
+              </div>
+              <div class="table-wrapper">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Company&nbsp;Name</th>
+                      <th>Project&nbsp;Name</th>
+                      <th>Budget</th>
+                      <th>Employee&nbsp;Capacity</th>
+                      <th>Estimated&nbsp;Income</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-body table-body_projects"></tbody>
+                </table>
+              </div>
+              <div class="total-income"></div>
+            </div>
+          </div>
+
+          <!-- Employees Panel -->
+          <div class="view-panel view-panel_employee">
+            <div class="card">
+              <div class="card-header">
+                <h2>👥 Employees</h2>
+                <button class="btn-primary btn-primary_employee">+ Add Employee</button>
+              </div>
+              <div class="table-wrapper">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Surname</th>
+                      <th>Age</th>
+                      <th>Position</th>
+                      <th>Salary</th>
+                      <th>Estimated&nbsp;Payment</th>
+                      <th>Project</th>
+                      <th>Projected&nbsp;Income</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-body table-body_employees"></tbody>
+                </table>
+              </div>
+              <div class="total-income"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide-in Panel: Add Project -->
+        <!-- <div class="panel-overlay" id="projectOverlay"></div>
+        <div class="slide-panel" id="projectPanel">
+          <div class="panel-header">
+            <h3>✨ New Project</h3>
+            <button class="close-panel" onclick="closeProjectPanel()">×</button>
+          </div>
+          <div class="panel-body">
+            <div class="form-group">
+              <label>Company Name *</label
+              ><input type="text" id="projCompany" placeholder="e.g. TechCorp">
+            </div>
+            <div class="form-group">
+              <label>Project Name *</label
+              ><input type="text" id="projName" placeholder="Project title">
+            </div>
+            <div class="form-group">
+              <label>Budget ($) *</label
+              ><input type="number" id="projBudget" placeholder="Total budget">
+            </div>
+            <div class="form-group">
+              <label>Employee Capacity</label
+              ><input type="number" id="projCapacity" value="2" step="0.5">
+            </div>
+          </div>
+          <div class="panel-footer">
+            <button class="btn-secondary" onclick="closeProjectPanel()">Cancel</button>
+            <button class="btn-primary" id="saveProjectBtn">Create Project</button>
+          </div>
+        </div> -->
+
+        <!-- Slide-in Panel: Add Employee -->
+        <!-- <div class="panel-overlay" id="employeeOverlay"></div>
+        <div class="slide-panel" id="employeePanel">
+          <div class="panel-header">
+            <h3>👤 Add Employee</h3>
+            <button class="close-panel" onclick="closeEmployeePanel()">×</button>
+          </div>
+          <div class="panel-body">
+            <div class="form-group">
+              <label>Name *</label><input id="empName" placeholder="First name">
+            </div>
+            <div class="form-group">
+              <label>Surname *</label><input id="empSurname" placeholder="Last name">
+            </div>
+            <div class="form-group">
+              <label>Age</label><input type="number" id="empAge" placeholder="Age">
+            </div>
+            <div class="form-group">
+              <label>Position</label><input id="empPosition" placeholder="e.g. Senior Developer">
+            </div>
+            <div class="form-group">
+              <label>Monthly Salary ($) *</label
+              ><input type="number" id="empSalary" placeholder="Salary amount">
+            </div>
+            <div class="form-group">
+              <label>Assign to Project</label
+              ><select id="empProjectId">
+                <option value="">— Not assigned —</option>
+              </select>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <button class="btn-secondary" onclick="closeEmployeePanel()">Cancel</button>
+            <button class="btn-primary" id="saveEmployeeBtn">Save Employee</button>
+          </div>
+        </div> -->
+
+        <!-- Seed Modal (lightbox) -->
+        <!-- <div class="panel-overlay" id="seedOverlay"></div>
+        <div class="slide-panel" id="seedPanel" style="width: 500px">
+          <div class="panel-header">
+            <h3>📥 Seed Data</h3>
+            <button class="close-panel" onclick="closeSeedPanel()">×</button>
+          </div>
+          <div class="panel-body">
+            <p style="margin-bottom: 20px">
+              Copy data from another month to
+              <strong id="targetPeriodSeed">February 2026</strong>
+            </p>
+            <div class="table-wrapper">
+              <table style="width: 100%; border-collapse: collapse">
+                <thead>
+                  <tr style="border-bottom: 1px solid #e2e8f0">
+                    <th style="padding: 8px; text-align: left">Month</th>
+                    <th style="padding: 8px; text-align: left">Projects</th>
+                    <th style="padding: 8px; text-align: left">Employees</th>
+                    <th style="padding: 8px"></th>
+                  </tr>
+                </thead>
+                <tbody id="seedMonthsBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div> -->
+      </div>
     </div>
 
     <script type="module" src="/src/main.ts"></script>

@@ -1,7 +1,9 @@
 import '@/assets/styles/global.scss';
 import { initBurger } from './components/burger.js';
+import { initSidebar } from './components/sidebar/sidebar.js';
 
 initBurger();
+initSidebar();
 
 import { monthlyStore } from './store/monthlyStore';
 import { createTestPanel } from './modules/testPanel';
@@ -39,6 +41,16 @@ console.log('📅 Доступные месяцы:', monthlyStore.getMonths());
 //   setTimeout(() => {
 //     createTestPanel();
 //     console.log('🛠️ Режим разработки: window.store, window.exportData()');
+//   }, 1000);
+// }
+
+// Vite предоставляет переменные окружения
+// if (import.meta.env.DEV) {
+//   // Этот код будет вырезан из продакшн-сборки
+//   const { createTestPanel } = await import('./modules/testPanel');
+//   setTimeout(() => {
+//     createTestPanel();
+//     console.log('🛠️ Режим разработки');
 //   }, 1000);
 // }
 

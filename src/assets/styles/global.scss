@@ -3,6 +3,8 @@
 @use 'mixins' as *;
 @use 'fonts' as *;
 @use 'normalize.css';
+@use 'sidebar/sidebar';
+@use 'tables/tables';
 
 /* сбрасываю, то что может мешать */
 
@@ -417,6 +419,7 @@ body.lock {
 .button {
   max-width: 100px;
   padding: 10px 20px;
+  margin-bottom: 40px;
   margin-left: 20px;
   color: $static-white;
 

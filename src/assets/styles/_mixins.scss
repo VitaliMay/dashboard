@@ -1,4 +1,5 @@
 @use 'sass:color';
+@use 'variables' as *;
 
 @mixin flex-center {
   display: flex;
@@ -40,14 +41,25 @@
 // Универсальный миксин для интерактивных состояний
 @mixin interactive-states($color) {
   background-color: $color;
+  transition: all $time-tr ease;
 
-  &:hover {
-    background-color: color.adjust($color, $lightness: -10%);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background-color: color.adjust($color, $lightness: -10%);
+    }
+
+    &:active {
+      background-color: color.adjust($color, $lightness: -20%);
+      transition: all $time-active ease;
+    }
   }
 
-  &:active {
-    background-color: color.adjust($color, $lightness: -20%);
-  }
+  // @media (hover: none) and (pointer: coarse) {
+  //   &:active {
+  //     background-color: color.adjust($color, $lightness: -20%);
+  //     transition: all $time-active ease;
+  //   }
+  // }
 
   // &:focus {
   //   outline: none;

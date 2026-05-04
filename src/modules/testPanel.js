@@ -151,7 +151,7 @@ export const createTestPanel = () => {
   panel.className = 'test-panel panel-hidden';
   panel.innerHTML = `
     <div class="test-panel-header">
-      <h3>📊 Управление проектами (Dev Panel)</h3>
+      <h3>📊 Управление проектами (Dev Panel) LS</h3>
       <button class="test-panel-toggle">−</button>
     </div>
     <div class="test-panel-content">
