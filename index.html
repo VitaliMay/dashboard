@@ -10,8 +10,8 @@
     >
     <title>Employee & Project Dashboard VitaliMay</title>
     <link rel="icon" href="./assets/GR__favicon_min-BNaFewJx.png">
-    <script type="module" crossorigin src="./assets/index-r-gT6qr4.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-CR8GfzsB.css">
+    <script type="module" crossorigin src="./assets/index-PCe15PjR.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Dx8tOKY8.css">
   </head>
   <body>
     <svg style="display: none">
@@ -244,102 +244,86 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <!-- Slide-in Panel: Add Project -->
-        <!-- <div class="panel-overlay" id="projectOverlay"></div>
-        <div class="slide-panel" id="projectPanel">
-          <div class="panel-header">
-            <h3>✨ New Project</h3>
-            <button class="close-panel" onclick="closeProjectPanel()">×</button>
-          </div>
-          <div class="panel-body">
-            <div class="form-group">
-              <label>Company Name *</label
-              ><input type="text" id="projCompany" placeholder="e.g. TechCorp">
-            </div>
-            <div class="form-group">
-              <label>Project Name *</label
-              ><input type="text" id="projName" placeholder="Project title">
-            </div>
-            <div class="form-group">
-              <label>Budget ($) *</label
-              ><input type="number" id="projBudget" placeholder="Total budget">
-            </div>
-            <div class="form-group">
-              <label>Employee Capacity</label
-              ><input type="number" id="projCapacity" value="2" step="0.5">
-            </div>
-          </div>
-          <div class="panel-footer">
-            <button class="btn-secondary" onclick="closeProjectPanel()">Cancel</button>
-            <button class="btn-primary" id="saveProjectBtn">Create Project</button>
-          </div>
-        </div> -->
+    <!-- Slide-in Panel: Add Project -->
+    <div class="panel-overlay panel-overlay_project"></div>
+    <div class="slide-panel slide-panel_project">
+      <div class="panel-header">
+        <h3>✨ New Project</h3>
+        <button class="close-panel close-panel_project">×</button>
+      </div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label>Company Name *</label>
+          <input type="text" id="projCompany" placeholder="e.g. TechCorp">
+        </div>
+        <div class="form-group">
+          <label>Project Name *</label>
+          <input type="text" id="projName" placeholder="Project title">
+        </div>
+        <div class="form-group">
+          <label>Budget ($) *</label>
+          <input type="number" id="projBudget" placeholder="Total budget">
+        </div>
+        <div class="form-group">
+          <label>Employee Capacity</label>
+          <input type="number" id="projCapacity" value="2" step="0.5">
+        </div>
+      </div>
+      <div class="panel-footer">
+        <button class="btn-secondary btn-secondary_cansel-project">Cancel</button>
+        <button class="btn-primary btn-primary_save-project">Create Project</button>
+      </div>
+    </div>
 
-        <!-- Slide-in Panel: Add Employee -->
-        <!-- <div class="panel-overlay" id="employeeOverlay"></div>
-        <div class="slide-panel" id="employeePanel">
-          <div class="panel-header">
-            <h3>👤 Add Employee</h3>
-            <button class="close-panel" onclick="closeEmployeePanel()">×</button>
-          </div>
-          <div class="panel-body">
-            <div class="form-group">
-              <label>Name *</label><input id="empName" placeholder="First name">
-            </div>
-            <div class="form-group">
-              <label>Surname *</label><input id="empSurname" placeholder="Last name">
-            </div>
-            <div class="form-group">
-              <label>Age</label><input type="number" id="empAge" placeholder="Age">
-            </div>
-            <div class="form-group">
-              <label>Position</label><input id="empPosition" placeholder="e.g. Senior Developer">
-            </div>
-            <div class="form-group">
-              <label>Monthly Salary ($) *</label
-              ><input type="number" id="empSalary" placeholder="Salary amount">
-            </div>
-            <div class="form-group">
-              <label>Assign to Project</label
-              ><select id="empProjectId">
-                <option value="">— Not assigned —</option>
-              </select>
-            </div>
-          </div>
-          <div class="panel-footer">
-            <button class="btn-secondary" onclick="closeEmployeePanel()">Cancel</button>
-            <button class="btn-primary" id="saveEmployeeBtn">Save Employee</button>
-          </div>
-        </div> -->
-
-        <!-- Seed Modal (lightbox) -->
-        <!-- <div class="panel-overlay" id="seedOverlay"></div>
-        <div class="slide-panel" id="seedPanel" style="width: 500px">
-          <div class="panel-header">
-            <h3>📥 Seed Data</h3>
-            <button class="close-panel" onclick="closeSeedPanel()">×</button>
-          </div>
-          <div class="panel-body">
-            <p style="margin-bottom: 20px">
-              Copy data from another month to
-              <strong id="targetPeriodSeed">February 2026</strong>
-            </p>
-            <div class="table-wrapper">
-              <table style="width: 100%; border-collapse: collapse">
-                <thead>
-                  <tr style="border-bottom: 1px solid #e2e8f0">
-                    <th style="padding: 8px; text-align: left">Month</th>
-                    <th style="padding: 8px; text-align: left">Projects</th>
-                    <th style="padding: 8px; text-align: left">Employees</th>
-                    <th style="padding: 8px"></th>
-                  </tr>
-                </thead>
-                <tbody id="seedMonthsBody"></tbody>
-              </table>
-            </div>
-          </div>
-        </div> -->
+    <!-- Slide-in Panel: Add Employee -->
+    <div class="panel-overlay panel-overlay_employee"></div>
+    <div class="slide-panel slide-panel_employee">
+      <div class="panel-header">
+        <h3>👤 Add Employee</h3>
+        <button class="close-panel close-panel_employee">×</button>
+      </div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label>Name *</label>
+          <input type="text" required placeholder="First name">
+        </div>
+        <div class="form-group">
+          <label>Surname *</label>
+          <input type="text" required placeholder="Last name">
+        </div>
+        <div class="form-group">
+          <label>Date of Birth *</label>
+          <input type="date" required placeholder="Age">
+        </div>
+        <div class="form-group">
+          <label>Position *</label>
+          <select required>
+            <option value="">Select position</option>
+            <option value="Junior">Junior</option>
+            <option value="Middle">Middle</option>
+            <option value="Senior">Senior</option>
+            <option value="Lead">Lead</option>
+            <option value="Architect">Architect</option>
+            <option value="BO">BO</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Monthly Salary ($) *</label>
+          <input required type="number" min="0.01" step="0.01" placeholder="Salary amount">
+        </div>
+        <div class="form-group">
+          <label>Assign to Project</label>
+          <select required>
+            <option value="">— Not assigned —</option>
+          </select>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <button class="btn-secondary btn-secondary_cansel-employee">Cancel</button>
+        <button class="btn-primary btn-primary_save-employee">Save Employee</button>
       </div>
     </div>
 
