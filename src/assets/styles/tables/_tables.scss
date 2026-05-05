@@ -41,6 +41,7 @@
 .card-header {
   display: flex;
   flex-wrap: wrap;
+  gap: 15px;
   align-items: center;
   justify-content: space-between;
   padding: 24px 28px 16px;
@@ -57,7 +58,9 @@
   padding: 10px 22px;
   font-weight: 600;
   color: white;
-  cursor: pointer;
+
+  @include custom-cursor;
+
   background: linear-gradient(135deg, #2266c7, #1a4f9e);
   border: none;
   border-radius: 40px;
@@ -94,36 +97,40 @@
   border-bottom: 1px solid #edf2f8;
 }
 
-.badge-link {
-  display: inline-block;
-  padding: 4px 12px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #2266c7;
-  cursor: pointer;
-  background: #eef2ff;
-  border-radius: 20px;
-}
+// .badge-link {
+//   display: inline-block;
+//   padding: 4px 12px;
+//   font-size: 0.75rem;
+//   font-weight: 600;
+//   color: #2266c7;
 
-.action-icons {
-  display: flex;
-  gap: 8px;
-}
+//   @include custom-cursor;
 
-.icon-btn {
-  padding: 4px 8px;
-  color: #64748b;
-  cursor: pointer;
-  background: none;
-  border: none;
-  border-radius: 8px;
-  transition: 0.15s;
-}
+//   background: #eef2ff;
+//   border-radius: 20px;
+// }
 
-.icon-btn:hover {
-  color: #2266c7;
-  background: #f1f5f9;
-}
+// .action-icons {
+//   display: flex;
+//   gap: 8px;
+// }
+
+// .icon-btn {
+//   padding: 4px 8px;
+//   color: #64748b;
+
+//   @include custom-cursor;
+
+//   background: none;
+//   border: none;
+//   border-radius: 8px;
+//   transition: 0.15s;
+// }
+
+// .icon-btn:hover {
+//   color: #2266c7;
+//   background: #f1f5f9;
+// }
 
 .total-income {
   padding: 16px 28px 24px;

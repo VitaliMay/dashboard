@@ -1,9 +1,13 @@
 import '@/assets/styles/global.scss';
 import { initBurger } from './components/burger.js';
 import { initSidebar } from './components/sidebar/sidebar.js';
+import { initTables } from './components/tables/tables.js';
+import { initSlidePanels } from './components/slide-in-panels/slide-in-panels.js';
 
 initBurger();
 initSidebar();
+initTables();
+initSlidePanels();
 
 import { monthlyStore } from './store/monthlyStore';
 import { createTestPanel } from './modules/testPanel';

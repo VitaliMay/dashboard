@@ -20,7 +20,7 @@ function handleSidebarClick(event) {
   }
   if (target.closest(`[${DATA_ATTRS.TABS}]`)) {
     const tabButton = target.closest(`[${DATA_ATTRS.TABS}]`);
-    console.log(tabButton);
+    // console.log(tabB utton);
     tab_btns.forEach((btn) => btn.classList.remove(CLASSES.PANEL_ACTIVE));
     tabButton.classList.add(CLASSES.PANEL_ACTIVE);
 
