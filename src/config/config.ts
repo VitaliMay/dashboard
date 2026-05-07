@@ -34,6 +34,13 @@ const DOM = {
   TABLES: {
     BUTTON_ADD_PROJECT: document.querySelector('.btn-primary_project'),
     BUTTON_ADD_EMPLOYEE: document.querySelector('.btn-primary_employee'),
+    TEMPLATE_ROW: {
+      PROJECT: document.querySelector('#template-row_project'),
+    },
+  },
+  SELECT: {
+    MONTH: document.querySelector('.period-select_month'),
+    YEAR: document.querySelector('.period-select_year'),
   },
   SLiDE_PANEL: {
     PROJECT: {

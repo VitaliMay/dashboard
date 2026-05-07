@@ -53,9 +53,66 @@ function createSvgUse(idSvgSymbol: string, elClass: string): SVGElement {
 /* *************************************** */
 
 function removeAllChild(element: HTMLElement): void {
-  while (element.firstElementChild) {
-    element.removeChild(element.firstElementChild);
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
   }
+}
+
+/* *************************************** */
+// для рендеринга таблиц
+
+// Интерфейс с id
+interface HasId {
+  id: string | number;
+}
+
+interface RenderTableParams<T extends HasId> {
+  tbodyElement: HTMLElement; // элемент, а не селектор!
+  templateElement: HTMLTemplateElement;
+  dataLS: T[];
+  renderRow: (row: HTMLElement, item: T) => void;
+}
+
+function renderTable<T extends HasId>({
+  tbodyElement, // селектор tbody
+  templateElement, // ID шаблона
+  dataLS, // массив данных
+  renderRow, // функция для заполнения строки
+}: RenderTableParams<T>): void {
+  if (!tbodyElement) {
+    console.error('tbody element not found');
+    return;
+  }
+
+  if (!templateElement) {
+    console.error('template element not found');
+    return;
+  }
+
+  if (!Array.isArray(dataLS)) {
+    console.error('dataLS must be an array');
+    return;
+  }
+
+  const fragment = document.createDocumentFragment(); // ← буфер в памяти
+
+  removeAllChild(tbodyElement);
+
+  for (const item of dataLS) {
+    const clone = templateElement.content.cloneNode(true) as DocumentFragment;
+    const row = clone.querySelector('tr');
+
+    if (!row) {
+      console.error('Template must contain a tr element');
+      continue; // или throw error
+    }
+
+    row.setAttribute('data-id', String(item.id));
+    renderRow(row, item); // специфичная для каждого типа данных логика
+
+    fragment.appendChild(clone); // сначала в буфер
+  }
+  tbodyElement.appendChild(fragment);
 }
 
 /* *************************************** */
@@ -123,6 +180,7 @@ export {
   createEl,
   createSvgUse,
   removeAllChild,
+  renderTable,
   shuffleArray,
   createCounterID,
   getMaxID,

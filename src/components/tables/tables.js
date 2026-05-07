@@ -1,7 +1,12 @@
 import { DOM, CLASSES } from '@/config/config';
+// import { renderTable } from '@/utils/utils';
+// import { renderProjectsTable } from './renderProjects';
+
+// https://www.youtube.com/watch?v=_sSHNLiGzj0&t=7449s
 
 const { MAIN_CONTENT, SLiDE_PANEL } = DOM;
 const { BUTTON_ADD_PROJECT, BUTTON_ADD_EMPLOYEE } = DOM.TABLES;
+// const { BUTTON_ADD_PROJECT, BUTTON_ADD_EMPLOYEE, TEMPLATE_ROW } = DOM.TABLES;
 const { PROJECT, EMPLOYEE } = SLiDE_PANEL;
 
 const buttonToPanel = new Map([
@@ -20,6 +25,8 @@ function handleMainClick(event) {
 }
 
 export const initTables = () => MAIN_CONTENT.addEventListener('click', handleMainClick);
+
+/**************************************************** */
 
 /**************************************************** */
 
@@ -55,3 +62,10 @@ export const initTables = () => MAIN_CONTENT.addEventListener('click', handleMai
 //     EMPLOYEE.ADD.classList.add(CLASSES.PANEL_OPEN);
 //   }
 // }
+
+// export const test = () => {
+//   const yearSelect = document.querySelector('.period-select_year');
+//   if (yearSelect) {
+//     yearSelect.value = '2027';
+//   }
+// };

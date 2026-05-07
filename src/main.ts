@@ -3,20 +3,54 @@ import { initBurger } from './components/burger.js';
 import { initSidebar } from './components/sidebar/sidebar.js';
 import { initTables } from './components/tables/tables.js';
 import { initSlidePanels } from './components/slide-in-panels/slide-in-panels.js';
+import { initProjectsTable } from './components/tables/renderProjects.js';
+import { initializeData } from './store/localStorage.js';
+import { setDefaultPeriod, getCurrentPeriod } from './utils/date-utils.js';
 
-initBurger();
-initSidebar();
-initTables();
-initSlidePanels();
+// initializeData();
+// initBurger();
+// initSidebar();
+// initTables();
+// initSlidePanels();
+// initProjectsTable();
 
 import { monthlyStore } from './store/monthlyStore';
 import { createTestPanel } from './modules/testPanel';
 import { PREFIXES } from './config/storage.js';
 
+// Установка текущего месяца в селектах
+const initApp = () => {
+  console.log('🚀 Запуск приложения');
+
+  // 1. Ставлю селекты на текущий месяц/год
+  setDefaultPeriod();
+
+  // 2. данные
+  initializeData();
+
+  // 3. компоненты
+  initBurger();
+  initSidebar();
+  initTables();
+  initSlidePanels();
+
+  // 4. таблицу проектов (она будет использовать текущий месяц из селектов)
+  initProjectsTable();
+
+  // 5. Выводим информацию
+  const currentPeriod = getCurrentPeriod();
+  console.log(`📅 Текущий период: ${currentPeriod.monthName} ${currentPeriod.year}`);
+  console.log('📊 Статистика:', monthlyStore.getStats());
+  console.log('📅 Доступные месяцы:', monthlyStore.getMonths());
+};
+
+// Запускаем приложение
+initApp();
+
 // Инициализация хранилища
-console.log('🚀 Запуск приложения');
-console.log('📊 Статистика:', monthlyStore.getStats());
-console.log('📅 Доступные месяцы:', monthlyStore.getMonths());
+// console.log('🚀 Запуск приложения');
+// console.log('📊 Статистика:', monthlyStore.getStats());
+// console.log('📅 Доступные месяцы:', monthlyStore.getMonths());
 
 // Для отладки в консоли
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

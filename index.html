@@ -151,9 +151,9 @@
             <select class="period-select period-select_month">
               <option value="January">January</option>
               <option value="February">February</option>
-              <option value="March">March</option>
+              <option value="March" selected>March</option>
               <option value="April">April</option>
-              <option value="May" selected>May</option>
+              <option value="May">May</option>
               <option value="June">June</option>
               <option value="July">July</option>
               <option value="August">August</option>
@@ -202,12 +202,25 @@
                       <th>Project&nbsp;Name</th>
                       <th>Budget</th>
                       <th>Employee&nbsp;Capacity</th>
+                      <th>Employees</th>
                       <th>Estimated&nbsp;Income</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody class="table-body table-body_projects"></tbody>
                 </table>
+
+                <template id="template-row_project">
+                  <tr>
+                    <td class="company-name"></td>
+                    <td class="project-name"></td>
+                    <td class="budget"></td>
+                    <td class="employee-capacity"></td>
+                    <td><button class="show-employees">Show Employees</button></td>
+                    <td class="estimated-income"></td>
+                    <td><button class="delete-project">Delete</button></td>
+                  </tr>
+                </template>
               </div>
               <div class="total-income"></div>
             </div>
