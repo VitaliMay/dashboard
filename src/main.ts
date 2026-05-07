@@ -3,7 +3,8 @@ import { initBurger } from './components/burger.js';
 import { initSidebar } from './components/sidebar/sidebar.js';
 import { initTables } from './components/tables/tables.js';
 import { initSlidePanels } from './components/slide-in-panels/slide-in-panels.js';
-import { initProjectsTable } from './components/tables/renderProjects.js';
+import { initProjectsTable, renderProjectsTable } from './components/tables/renderProjects.js';
+import { initEmployeesTable } from './components/tables/renderEmployees.js';
 import { initializeData } from './store/localStorage.js';
 import { setDefaultPeriod, getCurrentPeriod } from './utils/date-utils.js';
 
@@ -36,6 +37,8 @@ const initApp = () => {
 
   // 4. таблицу проектов (она будет использовать текущий месяц из селектов)
   initProjectsTable();
+  initEmployeesTable();
+  renderProjectsTable(); // рендерим Projects при старте
 
   // 5. Выводим информацию
   const currentPeriod = getCurrentPeriod();

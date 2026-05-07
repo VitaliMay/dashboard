@@ -153,31 +153,74 @@ export const fillProjectRow = (row, project, context) => {
   const estimatedIncome = calculateEstimatedIncome(project, monthData);
   const roundedIncome = Math.round(estimatedIncome);
 
-  if (incomeCell) incomeCell.textContent = `$${roundedIncome.toLocaleString()}`;
+  if (incomeCell) {
+    incomeCell.textContent = `$${roundedIncome.toLocaleString()}`;
+    incomeCell.style.color = estimatedIncome >= 0 ? '#10b981' : '#ef4444';
+  }
   if (totalAccumulator) {
-    totalAccumulator.value += roundedIncome;
+    totalAccumulator.value += estimatedIncome;
   }
 
-  // Расчет загрузки проекта и количества сотрудников
-  let currentWorkload = 0;
+  // if (incomeCell) incomeCell.textContent = `$${roundedIncome.toLocaleString()}`;
+  // if (totalAccumulator) {
+  //   totalAccumulator.value += estimatedIncome;
+  //   // totalAccumulator.value += roundedIncome;
+  // }
+
+  /****************************************** */
+  // Расчет загрузки проекта и количества сотрудников (с учетом fit)
+  let usedEffectiveCapacity = 0;
   let employeesCount = 0;
 
   monthData.employees?.forEach((employee) => {
-    employee.assignments?.forEach((assignment) => {
-      if (assignment.projectId === project.id) {
-        currentWorkload += assignment.capacity || 0;
-        employeesCount += 1;
-      }
-    });
+    // Ищем назначение сотрудника на текущий проект
+    const assignment = employee.assignments?.find((a) => a.projectId === project.id);
+    if (assignment) {
+      employeesCount += 1;
+
+      // 🔥 КЛЮЧЕВОЕ ИЗМЕНЕНИЕ: учитываем fit
+      const capacity = assignment.capacity || 0;
+      const fit = assignment.fit || 1;
+      const effectiveCapacity = capacity * fit;
+
+      usedEffectiveCapacity += effectiveCapacity;
+    }
   });
 
   if (capacityCell) {
-    capacityCell.textContent = `${currentWorkload} / ${project.employeeCapacity}`;
-    if (currentWorkload > project.employeeCapacity) {
+    // Отображаем usedEffectiveCapacity вместо простой суммы capacity
+    const usedDisplay = usedEffectiveCapacity.toFixed(2);
+    const totalDisplay = project.employeeCapacity.toFixed(2);
+    capacityCell.textContent = `${usedDisplay} / ${totalDisplay}`;
+
+    // Красный цвет, если эффективная загрузка превышает capacity проекта
+    if (usedEffectiveCapacity > project.employeeCapacity) {
       capacityCell.style.color = 'red';
+    } else {
+      capacityCell.style.color = ''; // сбрасываем цвет
     }
   }
 
+  // Расчет загрузки проекта и количества сотрудников
+  // let currentWorkload = 0;
+  // let employeesCount = 0;
+
+  // monthData.employees?.forEach((employee) => {
+  //   employee.assignments?.forEach((assignment) => {
+  //     if (assignment.projectId === project.id) {
+  //       currentWorkload += assignment.capacity || 0;
+  //       employeesCount += 1;
+  //     }
+  //   });
+  // });
+
+  // if (capacityCell) {
+  //   capacityCell.textContent = `${currentWorkload} / ${project.employeeCapacity}`;
+  //   if (currentWorkload > project.employeeCapacity) {
+  //     capacityCell.style.color = 'red';
+  //   }
+  // }
+  /****************************************************** */
   // Обработчик кнопки Show Employees
   const showBtn = row.querySelector('.show-employees');
   if (showBtn) {
@@ -326,7 +369,8 @@ export const renderProjectsTable = () => {
     });
 
     const totalIncome = totalAccumulator.value - benchPayments;
-    totalIncomeContainer.textContent = `💰 Total Estimated Income: $${totalIncome.toLocaleString()} (Bench payments: $${benchPayments.toLocaleString()})`;
+    totalIncomeContainer.textContent = `💰 Total Estimated Income: $${totalIncome.toFixed(2)} (Bench payments: $${benchPayments.toFixed(2)})`;
+    // totalIncomeContainer.textContent = `💰 Total Estimated Income: $${totalIncome.toLocaleString()} (Bench payments: $${benchPayments.toLocaleString()})`;
   }
 };
 
