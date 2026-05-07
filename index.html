@@ -10,8 +10,8 @@
     >
     <title>Employee & Project Dashboard VitaliMay</title>
     <link rel="icon" href="./assets/GR__favicon_min-BNaFewJx.png">
-    <script type="module" crossorigin src="./assets/index-BCAsrIro.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-Dx8tOKY8.css">
+    <script type="module" crossorigin src="./assets/index-BXfcqBdN.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-D01-BROi.css">
   </head>
   <body>
     <svg style="display: none">
@@ -359,6 +359,51 @@
       <div class="panel-footer">
         <button class="btn-secondary btn-secondary_cansel-employee">Cancel</button>
         <button class="btn-primary btn-primary_save-employee">Save Employee</button>
+      </div>
+    </div>
+
+    <!-- Seed Data -->
+    <div class="panel-overlay panel-overlay_seed"></div>
+    <div class="slide-panel slide-panel_seed">
+      <div class="panel-header">
+        <h3>🌱 Seed Data from Month</h3>
+        <button class="close-panel close-panel_seed" aria-label="Close">×</button>
+      </div>
+
+      <div class="panel-body panel-body_seed">
+        <p class="seed-description">
+          Select a month to copy its data to the current month (
+          <strong id="targetPeriodSeed">March 2026</strong>):
+        </p>
+
+        <div class="seed-table-wrapper">
+          <table class="seed-data-table">
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Month</th>
+                <th>Projects</th>
+                <th>Employees</th>
+                <th>Total Est. Income</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="seedMonthsBody"></tbody>
+          </table>
+
+          <template id="template-seed-row">
+            <tr class="seed-row">
+              <td class="seed-year"></td>
+              <td class="seed-month"></td>
+              <td class="seed-projects-count"></td>
+              <td class="seed-employees-count"></td>
+              <td class="seed-income"></td>
+              <td class="seed-action">
+                <button class="seed-button">Seed</button>
+              </td>
+            </tr>
+          </template>
+        </div>
       </div>
     </div>
 
