@@ -1,8 +1,9 @@
 import { renderProjectsTable } from '../tables/renderProjects';
 import { renderEmployeesTable } from '../tables/renderEmployees';
-import { CLASSES, DATA_ATTRS } from '@/config/config';
+import { CLASSES, DATA_ATTRS, DOM } from '@/config/config';
 
-const sidebar = document.querySelector('.sidebar');
+// const sidebar = document.querySelector('.sidebar');
+const { SIDEBAR: sidebar } = DOM.SIDEBAR;
 const app = document.querySelector('.app');
 
 const panel_project = app.querySelector('.view-panel_project');
@@ -16,7 +17,7 @@ export const initSidebar = () => {
 
 function handleSidebarClick(event) {
   const { target } = event;
-  // console.log(target);
+  console.log(target);
   if (target.closest(`.${CLASSES.SIDEBAR_TOGGLE_BUTTON}`)) {
     app.classList.toggle(CLASSES.SIDEBAR_COLLAPSED);
   }
@@ -35,6 +36,10 @@ function handleSidebarClick(event) {
 
     panel_project.classList.toggle(CLASSES.PANEL_ACTIVE);
     panel_employe.classList.toggle(CLASSES.PANEL_ACTIVE);
+  }
+  if (target.closest(`.${CLASSES.SIDEBAR_SEED_BUTTON}`)) {
+    DOM.SLiDE_PANEL.SEED.OVERLAY.classList.add(CLASSES.PANEL_ACTIVE);
+    DOM.SLiDE_PANEL.SEED.ADD.classList.add(CLASSES.PANEL_OPEN);
   }
 }
 // function handleSidebarClick(event) {

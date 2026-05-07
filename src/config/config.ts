@@ -7,6 +7,7 @@ const CLASSES = {
   SIDEBAR: 'sidebar',
   SIDEBAR_COLLAPSED: 'sidebar_collapsed',
   SIDEBAR_TOGGLE_BUTTON: 'sidebar-toggle',
+  SIDEBAR_SEED_BUTTON: 'seed-btn',
   PANEL_ACTIVE: 'active',
   PANEL_OPEN: 'open',
 };
@@ -30,7 +31,12 @@ const DATA_ATTRS = {
 };
 
 const DOM = {
+  BODY: document.body,
   MAIN_CONTENT: document.querySelector('.main-content'),
+  SIDEBAR: {
+    SIDEBAR: document.querySelector('#sidebar'),
+    BUTTON_SEED: document.querySelector('#seedDataBtn'),
+  },
   TABLES: {
     BUTTON_ADD_PROJECT: document.querySelector('.btn-primary_project'),
     BUTTON_ADD_EMPLOYEE: document.querySelector('.btn-primary_employee'),
@@ -54,6 +60,12 @@ const DOM = {
       ADD: document.querySelector('.slide-panel_employee'),
       CLOSE_BTN: document.querySelector('.close-panel_employee'),
       CANSEL_BTN: document.querySelector('.btn-secondary_cansel-employee'),
+    },
+    SEED: {
+      OVERLAY: document.querySelector('.panel-overlay_seed'),
+      ADD: document.querySelector('.slide-panel_seed'),
+      CLOSE_BTN: document.querySelector('.close-panel_seed'),
+      CANSEL_BTN: document.querySelector('.btn-secondary_cansel-seed'),
     },
   },
 };

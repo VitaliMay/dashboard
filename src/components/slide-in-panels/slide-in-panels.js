@@ -1,7 +1,7 @@
 import { DOM, CLASSES } from '@/config/config';
 
 const { SLiDE_PANEL } = DOM;
-const { PROJECT, EMPLOYEE } = SLiDE_PANEL;
+const { PROJECT, EMPLOYEE, SEED } = SLiDE_PANEL;
 
 const handlePanelAdd = (panel) => (event) => {
   const { target } = event;
@@ -14,6 +14,7 @@ const handlePanelAdd = (panel) => (event) => {
 export const initSlidePanels = () => {
   DOM.SLiDE_PANEL.PROJECT.ADD.addEventListener('click', handlePanelAdd(PROJECT));
   DOM.SLiDE_PANEL.EMPLOYEE.ADD.addEventListener('click', handlePanelAdd(EMPLOYEE));
+  DOM.SLiDE_PANEL.SEED.ADD.addEventListener('click', handlePanelAdd(SEED));
 };
 
 // export const initSlidePanels = () => {

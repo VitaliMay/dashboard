@@ -4,6 +4,7 @@ import { DOM, CLASSES } from '@/config/config';
 
 // https://www.youtube.com/watch?v=_sSHNLiGzj0&t=7449s
 
+// const { BODY, SLiDE_PANEL } = DOM;
 const { MAIN_CONTENT, SLiDE_PANEL } = DOM;
 const { BUTTON_ADD_PROJECT, BUTTON_ADD_EMPLOYEE } = DOM.TABLES;
 // const { BUTTON_ADD_PROJECT, BUTTON_ADD_EMPLOYEE, TEMPLATE_ROW } = DOM.TABLES;
@@ -24,6 +25,7 @@ function handleMainClick(event) {
   }
 }
 
+// export const initTables = () => BODY.addEventListener('click', handleMainClick);
 export const initTables = () => MAIN_CONTENT.addEventListener('click', handleMainClick);
 
 /**************************************************** */

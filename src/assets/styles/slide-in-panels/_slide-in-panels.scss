@@ -14,6 +14,11 @@
   background: white;
   box-shadow: -8px 0 30px rgb(0, 0, 0, 20%);
   transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &_seed {
+    right: -720px;
+    width: 700px;
+  }
 }
 
 .slide-panel.open {
@@ -123,5 +128,405 @@
 
   .main-content {
     padding: 16px;
+  }
+}
+
+/***********************************  */
+
+/***********************************  */
+
+/***********************************  */
+
+// .slide-panel_seed {
+//   width: 700px;
+
+//   @media (width <= 768px) {
+//     right: -100%;
+//     width: 100%;
+//   }
+// }
+
+// Опыты со скролом
+.panel-body_seed {
+  padding: 24px 28px;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f5f9;
+
+    // background: #c53374;
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+
+    &:hover {
+      background: #2266c7;
+    }
+  }
+}
+
+// Description text
+.seed-description {
+  padding: 12px 16px;
+  margin-bottom: 24px;
+  font-size: 0.9rem;
+  color: #1e293b;
+  background: #f0f9ff;
+  border-left: 3px solid #2266c7;
+  border-radius: 8px;
+
+  strong {
+    font-weight: 700;
+    color: #2266c7;
+  }
+}
+
+// Для горизонтального скрола
+.seed-table-wrapper {
+  overflow-x: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+
+  @media (width <= 640px) {
+    border-radius: 8px;
+  }
+}
+
+// Таблица
+.seed-data-table {
+  width: 100%;
+  font-size: 0.85rem;
+  border-collapse: collapse;
+
+  thead {
+    background: #f8fafc;
+
+    th {
+      padding: 14px 12px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #1e293b;
+      text-align: left;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 2px solid #e2e8f0;
+
+      &:first-child {
+        padding-left: 16px;
+      }
+
+      &:last-child {
+        padding-right: 16px;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid #e2e8f0;
+      transition: background $time-tr;
+
+      &:hover {
+        background: #f8fafc;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    td {
+      padding: 14px 12px;
+      color: #1e293b;
+
+      &:first-child {
+        padding-left: 16px;
+      }
+
+      &:last-child {
+        padding-right: 16px;
+      }
+    }
+  }
+}
+
+.seed-year {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.seed-month {
+  font-weight: 600;
+  color: #2266c7;
+}
+
+.seed-projects-count {
+  text-align: center;
+
+  &::before {
+    margin-right: 6px;
+    font-size: 1rem;
+    content: '📊';
+  }
+}
+
+.seed-employees-count {
+  text-align: center;
+
+  &::before {
+    margin-right: 6px;
+    font-size: 1rem;
+    content: '👥';
+  }
+}
+
+.seed-income {
+  font-weight: 700;
+}
+
+.income-positive {
+  color: #10b981;
+}
+
+.income-negative {
+  color: #ef4444;
+}
+
+.income-neutral {
+  color: #f59e0b;
+}
+
+.income-low {
+  color: #64748b;
+}
+
+// Seed action button
+.seed-action {
+  text-align: center;
+}
+
+.seed-button {
+  padding: 8px 24px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #2266c7, #1a4f9e);
+  border: none;
+  border-radius: 24px;
+  box-shadow: 0 1px 3px rgb(0, 0, 0, 10%);
+  transition: all 0.2s;
+
+  @include custom-cursor;
+
+  &:hover {
+    box-shadow: 0 6px 14px rgb(34, 102, 199, 30%);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &.loading {
+    pointer-events: none;
+    opacity: 0.7;
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 16px;
+      height: 16px;
+      margin-top: -8px;
+      margin-left: -8px;
+      content: '';
+      border: 2px solid rgb(255, 255, 255, 30%);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+  }
+}
+
+.seed-empty-state {
+  padding: 60px 20px;
+  font-size: 0.9rem;
+  color: #64748b;
+  text-align: center;
+
+  &::before {
+    display: block;
+    margin-bottom: 16px;
+    font-size: 3rem;
+    content: '📭';
+  }
+}
+
+// Notification styles
+.seed-notification {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 2000;
+  padding: 14px 28px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgb(0, 0, 0, 15%);
+  animation: slideInRight 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.seed-notification_success {
+  background: #10b981;
+}
+
+.seed-notification_error {
+  background: #ef4444;
+}
+
+.seed-notification_info {
+  background: #2266c7;
+}
+
+// Keyframes for notifications
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Темная тема
+@media (prefers-color-scheme: dark) {
+  .slide-panel_seed {
+    background: #1e293b;
+  }
+
+  .panel-header h3 {
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    background-clip: text;
+  }
+
+  .close-panel {
+    color: #94a3b8;
+
+    &:hover {
+      background: #334155;
+    }
+  }
+
+  .seed-description {
+    color: #e2e8f0;
+    background: #1e293b;
+
+    strong {
+      color: #60a5fa;
+    }
+  }
+
+  .seed-table-wrapper {
+    border-color: #334155;
+  }
+
+  .seed-data-table {
+    thead {
+      background: #0f172a;
+
+      th {
+        color: #e2e8f0;
+        border-bottom-color: #334155;
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom-color: #334155;
+
+        &:hover {
+          background: #1e293b;
+        }
+      }
+
+      td {
+        color: #e2e8f0;
+      }
+    }
+  }
+
+  .seed-year {
+    color: #e2e8f0;
+  }
+
+  .seed-empty-state {
+    color: #94a3b8;
+  }
+}
+
+// Mobile
+@media (width <= 768px) {
+  .slide-panel_seed {
+    width: 100%;
+  }
+
+  .panel-body_seed {
+    padding: 16px 20px;
+  }
+
+  .seed-data-table {
+    font-size: 0.75rem;
+
+    th,
+    td {
+      padding: 10px 8px;
+    }
+  }
+
+  .seed-button {
+    padding: 6px 16px;
+    font-size: 0.75rem;
+  }
+
+  .seed-notification {
+    right: 16px;
+    bottom: 16px;
+    padding: 10px 20px;
+    font-size: 0.8rem;
+  }
+}
+
+// чтобы не сжималась
+@media (width <= 640px) {
+  .seed-data-table {
+    min-width: 500px;
   }
 }
